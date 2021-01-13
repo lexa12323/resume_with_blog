@@ -1,0 +1,6 @@
+{
+    "port": 5001,
+    "mongoUri": "mongodb+srv://localhost:pbIQLy8BDOfvvmPN@cluster0.0wdf5.mongodb.net/resume_with_blog",
+    "salt": 12,
+    "jwtSecret": "lololo"
+}
