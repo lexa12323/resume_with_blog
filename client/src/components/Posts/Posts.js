@@ -4,14 +4,14 @@ import { Post } from './Post/Post'
 import styles from  './posts.module.css'
 import './posts.scss'
 
-export const Posts = () => {
+export const Posts = ({setCurrentId}) => {
     const posts = useSelector((state) => state.posts)
     console.log(posts)
     return (
         <div>
             <p className={styles.posts}>Posts</p>
             <p className="posts__wrapper">Posts</p>
-            { posts.map((post) => <Post key={post._id} post={post}>{post.message}</Post>) }
+            { posts.map((post) => <Post key={post._id} post={post} setCurrentId={setCurrentId}>{post.message}</Post>) }
         </div>
     )
 }
