@@ -30,7 +30,7 @@ export const updatePost = async (req, res) => {
     const { params, body } = req;
     const { id: _id } = params;
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message: 'Id not found'})
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, body, {new: true})
+    const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...body, _id  }, {new: true})
     res.status(200).json(updatedPost)
     //const newPost = new PostMessage(body)
 
@@ -40,4 +40,21 @@ export const updatePost = async (req, res) => {
     } catch (error) {
         res.status(409).json({message: error.message})
     }
+}
+
+export const deletePost = async (req, res) => {
+    
+    const { params, body } = req;
+    const { id } = params;
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({message: 'Id not found'})
+    await PostMessage.findByIdAndRemove(id)
+    res.status(200).json({id, message: 'post delete success'})
+    //const newPost = new PostMessage(body)
+
+    /*try {
+        await newPost.save()
+        res.status(201).json(newPost)
+    } catch (error) {
+        res.status(409).json({message: error.message})
+    }*/
 }

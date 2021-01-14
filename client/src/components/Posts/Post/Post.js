@@ -1,9 +1,13 @@
 import React from 'react'
 import moment from 'moment'
+import { useDispatch } from 'react-redux'
 import './post.scss'
+
+import {deletePost} from '../../../actions/posts' 
 
 export const Post = ({children, post, setCurrentId}) => {
     const { _id, creator, title, message, tags, selectedFile, createdAt, likeCount  } = post
+    const dispatch = useDispatch()
     return (
         <div>
             { selectedFile && <img src={selectedFile} alt={title}/> }
@@ -14,7 +18,7 @@ export const Post = ({children, post, setCurrentId}) => {
             { message }  
             <button onClick={() => {setCurrentId(_id)}}>Update</button>
             <button onClick={() => {}}>{likeCount}</button>
-            <button onClick={() => {}}>Delete</button>
+            <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button>
         </div>
     )
 }

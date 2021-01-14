@@ -1,20 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import FileBase from 'react-file-base64'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './form.module.css' 
 import { createPost, updatePost } from '../../actions/posts'
 
 export const Form = ({currentId, setCurrentId}) => {
-
-    const [postData, setPostData] = useState({
+    const defaultPostData = {
         creator: '',
         title: '',
         message: '',
         tags: '',
         selectedFile: ''
-    })
+    }
+    const [postData, setPostData] = useState(defaultPostData)
+
+    const post = useSelector((state) => currentId ? state.posts.find((p)=> p._id ===currentId) : null)
+
+    useEffect(() => {
+        if(post) setPostData(post)
+    }, [post]) 
 
     const dispatch = useDispatch()
+
+    const clear = () => {
+        setCurrentId(null)
+        setPostData(defaultPostData)
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,12 +33,15 @@ export const Form = ({currentId, setCurrentId}) => {
             dispatch(updatePost(currentId, postData))
         } else {
             dispatch(createPost(postData))
+            
         }
+        clear()
     }
     
     return (
         <div>
             <p className={styles.posts}>Form</p>
+            <p> {!currentId ? 'Creating' : 'Updating' }</p>
             <form onSubmit={handleSubmit}>
                 <input 
                     name = "creator"
@@ -55,6 +69,7 @@ export const Form = ({currentId, setCurrentId}) => {
                     onDone={({base64}) => setPostData({ ...postData, selectedFile: base64})}
                 />
                 <button>Сохранить</button>
+                <button type="button" onClick={() => clear()}>Clear</button>
             </form>
             
         </div>
