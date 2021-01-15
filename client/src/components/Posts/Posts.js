@@ -6,7 +6,6 @@ import './posts.scss'
 
 export const Posts = ({setCurrentId}) => {
     const posts = useSelector((state) => state.posts)
-    console.log(posts)
     return (
         <div>
             <p className={styles.posts}>Posts</p>

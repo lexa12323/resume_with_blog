@@ -61,7 +61,7 @@ export const Form = ({currentId, setCurrentId}) => {
                 <input 
                     name = "tags"
                     value={postData.tags}
-                    onChange = {(e) => setPostData({ ...postData, tags: e.target.value})}
+                    onChange = {(e) => setPostData({ ...postData, tags: e.target.value.split(',')})}
                 />
                 <FileBase 
                     type="file"
