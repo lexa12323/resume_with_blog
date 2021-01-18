@@ -1,16 +1,15 @@
 import React from 'react'
 import { Page } from  '../views/Page/Page'
-import { Signature } from '../views/Signature/Signature'
 
-export const SkillsPage = () => {
-    const title = 'My Skills';
-    const subtitle = 'Experience Skill';
+export const EducationPage = () => {
+
+    const title = 'Education';
+    const subtitle = `Just My Educational Background`;
     const description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.';
     
     return (
         <Page title={title} subtitle={subtitle} description={description}>
-            <Signature />
-
+            
         </Page>
     )
 }

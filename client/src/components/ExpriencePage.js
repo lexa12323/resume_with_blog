@@ -13,7 +13,6 @@ export const ExpriencePage = () => {
     return (
         <Page title={title} subtitle={subtitle} description={description}>
             <ExprienceList />
-
         </Page>
     )
 }
