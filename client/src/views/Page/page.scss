@@ -1,0 +1,32 @@
+.page{
+    padding-top: 30px;
+    &__title{
+        font-size: 56px;
+        font-weight: 700;
+        &-nobottom{
+            margin-bottom: 0;
+        }
+    }
+    &__subtitle{
+        font-size: 24px;
+        &-notop{
+            margin-top: 0;
+        }
+    }
+
+    &__description{
+        line-height: 24px;
+    }
+
+    &__address{
+        margin-top: 40px;
+    }
+}
+
+.address{
+    &__item{
+        font-size: 16px;
+        line-height: 30px;
+        font-style: normal;
+    }
+}

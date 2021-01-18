@@ -1,26 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import './app.css'
-import { useDispatch } from 'react-redux'
-import { Posts } from './components/Posts/Posts'
-import { Form } from './components/Form/Form'
-import { getPosts } from './actions/posts'
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import { Layout } from './views/Layout/Layout'
+import PostsContainer from './components/Posts/PostsContainer'
+import { AboutPage } from './components/AboutPage'
+import { SkillsPage } from './components/SkillsPage'
+import { ExpriencePage } from './components/ExpriencePage'
 
 const App = () => {
-    const [currentId, setCurrentId] = useState(null)
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getPosts())
-    }, [currentId, dispatch])
-
     return(
-        <Layout>
-
-            <h1>App</h1>
-            <Posts setCurrentId={setCurrentId}/>
-            <Form currentId={currentId} setCurrentId={setCurrentId}/>
-        </Layout>
+        <Router>
+            <Layout>
+                <Switch>
+                    <Route path="/about" exact component={AboutPage} />
+                    <Route path="/skills" exact component={SkillsPage} />
+                    <Route path="/experience" exact component={ExpriencePage} />
+                    <Route path="/posts" component={PostsContainer} />
+                </Switch>
+            </Layout>
+        </Router>
     )
 }
 

@@ -1,0 +1,57 @@
+.navbar{
+    &__list{
+        list-style-type: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+    }
+    &__item{
+        &:nth-child(1) {
+            background-color: #f4bf00;
+        }
+        
+        &:nth-child(2) {
+            background-color: #f7941d;
+        }
+        
+        &:nth-child(3) {
+            background-color: #f26522;
+        }
+        
+        &:nth-child(4) {
+            background-color: #ed1c24;
+        }
+        
+        &:nth-child(5) {
+            background-color: #e10337;
+        }
+        
+        &:nth-child(6) {
+            background-color: #b90162;
+        }
+        
+        &:nth-child(7) {
+            background-color: #873e95;
+        }
+        
+        &:nth-child(8) {
+            background-color: #3c70b4;
+        }
+        
+        &:nth-child(9) {
+            background-color: #05ac80;
+        }
+        
+        /*&:last-child {
+            background-color: #87c05e;
+        }*/
+    }
+    &__link{
+        color: #fff;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 28px 18px;
+        font-size: 14px;
+        display: block;
+    }
+}

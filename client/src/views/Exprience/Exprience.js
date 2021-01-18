@@ -1,0 +1,31 @@
+import React from 'react'
+import './exprience.scss'
+import { exprience } from '../../mock/exprience'
+
+export const Exprience = ({img, title, subtitle, text}) => {
+    return (
+        <div className="exprience__item">
+            <img className="exprience__image" src={img} alt="logo"/>
+            <div className="exprience__info">
+                <div className="exprience__title">
+                    {title}
+                </div>
+                <div className="exprience__subtitle">
+                    {subtitle}
+                </div>
+                <div className="exprience__text">
+                    {text}
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export const ExprienceList = () => {
+    return (
+        <div className="exprience">
+            { exprience.map((item) => <Exprience {...item}/>) }
+        </div>
+    )
+}
+

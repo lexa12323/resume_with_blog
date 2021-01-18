@@ -1,0 +1,43 @@
+.achievements{
+    display: flex;
+    
+    &__item{
+        margin-right: 20px;
+        &:nth-child(1){
+            .achievements__counter{
+                color: #f7941d;
+            }
+        }
+        &:nth-child(2){
+            .achievements__counter{
+                color: #873e95;
+            }
+        }
+        &:nth-child(3){
+            .achievements__counter{
+                color: #3c70b4;
+            }
+        }
+        &:nth-child(4){
+            .achievements__counter{
+                color: #87c05e;
+            }
+        }
+    }
+
+    &__list{
+
+    }
+
+    &__counter {
+        font-size: 56px;
+        font-weight: 700;
+        color: #f7941d;
+        margin: 0;
+    }
+
+    &__name{
+        font-size: 16px;
+        margin: 0;
+    }
+}

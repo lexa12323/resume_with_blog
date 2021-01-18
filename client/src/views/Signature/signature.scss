@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat%3A400%2C700%7CSacramento&amp;ver=1.6');
+
+.signature{
+    font-family: 'Sacramento', cursive;
+    font-size: 36px;
+    &-medium{
+        font-size: 24px;
+    }
+    &-small{
+        font-size: 12px;
+    }
+}

@@ -3,7 +3,8 @@ import './content.scss'
 
 export const Content = ({ children }) => {
     return (
-        <div>
+        
+        <div className="container">
             { children }
         </div>
     )
