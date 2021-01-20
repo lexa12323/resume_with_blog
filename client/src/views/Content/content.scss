@@ -1,4 +1,9 @@
 .container{
-    margin: 0 auto;
-    max-width: 1200px;
+    &__wrapper{
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+    &-darken{
+        background-color: #f9f9f9;
+    }
 }

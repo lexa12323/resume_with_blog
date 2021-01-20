@@ -1,6 +1,6 @@
 import React from 'react'
 import './exprience.scss'
-import { exprience } from '../../mock/exprience'
+
 
 export const Exprience = ({img, title, subtitle, text}) => {
     return (
@@ -21,7 +21,7 @@ export const Exprience = ({img, title, subtitle, text}) => {
     )
 }
 
-export const ExprienceList = () => {
+export const ExprienceList = ({exprience}) => {
     return (
         <div className="exprience">
             { exprience.map((item) => <Exprience {...item}/>) }

@@ -2,6 +2,8 @@ import React from 'react'
 import { Page } from  '../views/Page/Page'
 import { ExprienceList } from '../views/Exprience/Exprience'
 import { yearsDiff } from '../helpers/yearsDiff'
+import { exprience } from '../mock/exprience'
+import { Layout } from '../views/Layout/Layout'
 
 export const ExpriencePage = () => {
 
@@ -11,8 +13,10 @@ export const ExpriencePage = () => {
     const description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.';
     
     return (
-        <Page title={title} subtitle={subtitle} description={description}>
-            <ExprienceList />
-        </Page>
+        <Layout>
+            <Page title={title} subtitle={subtitle} description={description}>
+                <ExprienceList exprience={exprience}/>
+            </Page>
+        </Layout>
     )
 }

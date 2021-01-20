@@ -3,13 +3,13 @@ import { Header } from '../Header/Header'
 import { Content } from '../Content/Content'
 import { Footer } from '../Footer/Footer'
 
-export const Layout = ({children}) => {
+export const Layout = ({children, darken}) => {
     return (
         <div>
             <Header />
-            <Content>
-                { children } 
-            </Content>
+                <Content darken={darken}>
+                    { children } 
+                </Content>
             <Footer />
         </div>
     )

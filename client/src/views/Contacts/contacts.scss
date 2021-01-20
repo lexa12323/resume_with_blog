@@ -1,0 +1,23 @@
+.contacts{
+    &__title{
+        font-size: 24px;
+        font-weight: 700;
+        padding: 10px 0;
+    }
+
+    &__text {
+        font-size: 16px;
+    }
+
+    &__icon{
+        margin-right: 30px;
+        flex-basis: 50px;
+        width: 50px;
+    }
+
+    &__item{
+        padding: 30px 0;
+        display: flex;
+        border-bottom: 1px solid #f1f1f1;
+    }
+}

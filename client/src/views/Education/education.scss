@@ -1,0 +1,33 @@
+.education{
+        &__item{
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 40px 0;
+            &:last-child{
+                border-bottom: none;
+            }
+        }
+        &__image{
+            max-width: 300px;
+            max-height: 100px;
+        }
+    
+        &__info{
+    
+        }
+    
+        &__title{
+            font-size: 24px;
+            font-weight: 700;
+            padding: 10px 0;
+        }
+    
+        &__subtitle{
+            font-size: 16px;
+            font-weight: 700;
+        }
+    
+        &__text{
+            padding: 10px 0;
+            font-size: 14px;
+        }
+}
