@@ -1,31 +1,29 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import decode from 'jwt-decode'
 import { Link, useLocation } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import {  logout  } from '../../actions/auth'
+import { useDispatch, useSelector } from 'react-redux'
 import './navbar.scss'
 
 export const Navbar = ({list}) => {
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+    const user = useSelector((state) => state.auth)
     const dispatch = useDispatch()
     const location = useLocation()
 
-    const logout = () => {
-        dispatch({type: "LOGOUT"});
-        setUser(null)
-    }
-
     useEffect(()=> {
-        const token = user?.token
-
+        const token = user?.authData?.token
         if(token){
-            const decodedToken = decode(token)
-            if(decodedToken.exp * 1000 < new Date().getTime()){
-                logout()
+            try {
+                const decodedToken = decode(token)
+                if(decodedToken.exp * 1000 < new Date().getTime()){
+                    dispatch(logout())
+                }
+                
+            } catch (error) {
+                dispatch(logout())
             }
         }
-
-        setUser(JSON.parse(localStorage.getItem('profile')))
-    }, [location])
+    }, [location, dispatch, user])
     return (
         <div className="navbar">
             <ul className="navbar__list">
@@ -35,10 +33,10 @@ export const Navbar = ({list}) => {
                     </li>
                 )}
             </ul>
-            { user ? (
+            { user.authData ? (
                 <div>
-                    <div>Logged {user?.result?.email}</div>
-                    <button onClick={() => logout()}>Logout</button>
+                    <div>Logged {user?.authData?.result?.email}</div>
+                    <button onClick={() => dispatch(logout())}>Logout</button>
                 </div>
             ) : (
                 <Link to="/auth">Login</Link>

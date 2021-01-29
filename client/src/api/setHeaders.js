@@ -1,4 +1,5 @@
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
+import { storageLabel } from '../constants/common'
 
 export const apiInterceptors = async (API) => {
 
@@ -12,10 +13,10 @@ export const apiInterceptors = async (API) => {
     const visitorId = result.visitorId;
 
     API.interceptors.request.use((req) => {
-        if(localStorage.getItem('profile')){
-            req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`
-            req.headers.devicefingerprint = visitorId
+        if(localStorage.getItem(storageLabel)){
+            req.headers.Authorization = `Bearer ${JSON.parse(localStorage.getItem(storageLabel)).token}`
         }
+        req.headers.devicefingerprint = visitorId
         return req;
     })
 }

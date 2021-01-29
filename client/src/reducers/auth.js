@@ -1,14 +1,15 @@
 import { AUTH, LOGOUT } from '../constants/actionTypes'
+import { storageLabel } from '../constants/common'
 
-const reducer = (state = {authData: null}, action) => {
+const initialState = JSON.parse(localStorage.getItem(storageLabel));
+
+const reducer = (state = {authData: initialState}, action) => {
 
     switch (action.type) {
         case AUTH:
-            localStorage.setItem('profile', JSON.stringify({...action?.payload }))
             return {...state, authData: action?.payload}
 
         case LOGOUT:
-            localStorage.removeItem('profile')
             return {...state, authData: null}
     
         default:

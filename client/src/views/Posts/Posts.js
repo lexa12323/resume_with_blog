@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { useSelector } from 'react-redux'
 import './posts.scss'
 
 export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch}) => {
@@ -23,9 +24,8 @@ export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch}) => 
 export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => {
 
     const { _id, creator, title, message, tags, selectedFile, createdAt, likes  } = post
-
-    const user= JSON.parse(localStorage.getItem('profile'))
-    const isOwner = post.creator === user?.result._id;
+    const user = useSelector((state) => state.auth)
+    const isOwner = post.creator === user?.authData?.result._id;
     return (
         <div className="post posts__item">
             <div className="post__date_container">
