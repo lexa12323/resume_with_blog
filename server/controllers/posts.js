@@ -54,18 +54,20 @@ export const deletePost = async (req, res) => {
 
 export const likePost = async (req, res) => {
     
-    const { params, body } = req;
+    const { params, body, headers } = req;
+    const { devicefingerprint } = headers
     const { id } = params;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({message: 'Id not found'})
+    if (!devicefingerprint) return res.status(404).json({message: 'no devicefingerprint'})
     const post = await PostMessage.findById(id)
 
-    const index = post.likes.findIndex((id) => id === String(req.userId))
+    const index = post.likes.findIndex((id) => id === String(devicefingerprint))
 
     if (index === -1){
-        post.likes.push(req.userId)
+        post.likes.push(devicefingerprint)
     } else {
-        post.likes = post.likes.filter((id) => id !== String(req.userId))
+        post.likes = post.likes.filter((id) => id !== String(devicefingerprint))
     }
     
     const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true})

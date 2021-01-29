@@ -1,5 +1,5 @@
 import React from 'react'
-import moment from 'moment';
+import moment from 'moment'
 import './posts.scss'
 
 export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch}) => {
@@ -21,7 +21,11 @@ export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch}) => 
 }
 
 export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => {
+
     const { _id, creator, title, message, tags, selectedFile, createdAt, likes  } = post
+
+    const user= JSON.parse(localStorage.getItem('profile'))
+    const isOwner = post.creator === user?.result._id;
     return (
         <div className="post posts__item">
             <div className="post__date_container">
@@ -31,8 +35,8 @@ export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => 
             <div className="post__title">{title}</div>
             <div className="post__crator">{creator}</div>
             <div className="post__meta">{tags.map((tag) => `#${tag}`)}</div>
-            <button onClick={() => {setCurrentId(_id)}}>Update</button>
-            <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button>
+            {isOwner &&<button onClick={() => {setCurrentId(_id)}}>Update</button>}
+            {isOwner && <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button> }
             <button onClick={() => {dispatch(likePost(post._id))}}>Like {likes.length}</button>
         </div>
     )
