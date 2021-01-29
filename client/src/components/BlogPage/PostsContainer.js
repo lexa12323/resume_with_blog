@@ -6,7 +6,7 @@ import { Layout } from '../../views/Layout/Layout'
 import { useSelector } from 'react-redux'
 import { Posts } from '../../views/Posts/Posts'
 import { Form } from '../Form/Form'
-import { getPosts } from '../../actions/posts'
+import { getPosts, deletePost, likePost } from '../../actions/posts'
 
 const PostsContainer = () => {
     const [currentId, setCurrentId] = useState(null)
@@ -25,7 +25,13 @@ const PostsContainer = () => {
     return(
         <Layout>
             <Page title={title} subtitle={subtitle} description={description} darken>
-                <Posts setCurrentId={setCurrentId} posts={posts}/>
+                <Posts 
+                    setCurrentId={setCurrentId} 
+                    posts={posts} 
+                    deletePost={deletePost} 
+                    likePost={likePost} 
+                    dispatch={dispatch}
+                />
                 <Form currentId={currentId} setCurrentId={setCurrentId}/>
             </Page>
         </Layout>

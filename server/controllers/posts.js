@@ -15,7 +15,7 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
     
     const { body } = req;
-    const newPost = new PostMessage(body)
+    const newPost = new PostMessage({...body, creator: req.userId})
 
     try {
         await newPost.save()
@@ -59,8 +59,16 @@ export const likePost = async (req, res) => {
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({message: 'Id not found'})
     const post = await PostMessage.findById(id)
+
+    const index = post.likes.findIndex((id) => id === String(req.userId))
+
+    if (index === -1){
+        post.likes.push(req.userId)
+    } else {
+        post.likes = post.likes.filter((id) => id !== String(req.userId))
+    }
     
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount:  post.likeCount + 1}, {new: true})
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true})
 
     res.json(updatedPost)
 }

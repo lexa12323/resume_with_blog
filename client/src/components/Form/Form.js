@@ -6,7 +6,6 @@ import { createPost, updatePost } from '../../actions/posts'
 
 export const Form = ({currentId, setCurrentId}) => {
     const defaultPostData = {
-        creator: '',
         title: '',
         message: '',
         tags: '',
@@ -43,11 +42,6 @@ export const Form = ({currentId, setCurrentId}) => {
             <p className={styles.posts}>Form</p>
             <p> {!currentId ? 'Creating' : 'Updating' }</p>
             <form onSubmit={handleSubmit}>
-                <input 
-                    name = "creator"
-                    value={postData.creator}
-                    onChange = {(e) => setPostData({ ...postData, creator: e.target.value})}
-                />
                 <input 
                     name = "title"
                     value={postData.title}

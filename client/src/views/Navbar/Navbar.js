@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import './navbar.scss'
 
 export const Navbar = ({list}) => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')))
+    const dispatch = useDispatch()
+    const logout = () => {
+        dispatch({type: "LOGOUT"});
+        setUser(null)
+    }
     return (
         <div className="navbar">
             <ul className="navbar__list">
@@ -12,6 +19,14 @@ export const Navbar = ({list}) => {
                     </li>
                 )}
             </ul>
+            { user ? (
+                <div>
+                    <div>Logged {user?.result?.email}</div>
+                    <button onClick={() => logout()}>Logout</button>
+                </div>
+            ) : (
+                <Link to="/auth">Login</Link>
+            )}
         </div>
     )
 }
