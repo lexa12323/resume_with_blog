@@ -1,11 +1,11 @@
 import PostMessage from '../models/postMessage.js'
 import mongoose from 'mongoose'
 
+
 export const getPosts = async (req, res) => {
     
     try {
         const postMessages = await PostMessage.find()
-        console.log(postMessages)
         res.status(200).json(postMessages)
     } catch (error) {
         res.status(404).json({message: error.message})
@@ -14,8 +14,8 @@ export const getPosts = async (req, res) => {
 
 export const createPost = async (req, res) => {
     
-    const { body } = req;
-    const newPost = new PostMessage({...body, creator: req.userId})
+    const { body, file } = req;
+    const newPost = new PostMessage({...body, creator: req.userId, selectedFile: file?.filename})
 
     try {
         await newPost.save()
@@ -43,7 +43,6 @@ export const updatePost = async (req, res) => {
 }
 
 export const deletePost = async (req, res) => {
-    
     const { params, body } = req;
     const { id } = params;
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({message: 'Id not found'})

@@ -7,7 +7,6 @@ export const signin = (formData, history) => async (dispatch) => {
     try {
         const data = await loginService(formData)
         const action = { type: AUTH, payload: data }
-        console.log('AUTH action', data)
         dispatch(action);
         history.push('/')
 

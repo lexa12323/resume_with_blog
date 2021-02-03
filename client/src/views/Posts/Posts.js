@@ -29,11 +29,11 @@ export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => 
     return (
         <div className="post posts__item">
             <div className="post__date_container">
-                <img className="post__image" src="https://themes.themeregion.com/geek/wp-content/uploads/2017/04/2-2.jpg"  alt="post_img"/>
+                <img className="post__image" src={`http://localhost:5000/uploads/${selectedFile}`}  alt="post_img"/>
                 <div className="post__date">{moment(createdAt).fromNow()}</div>
             </div>
             <div className="post__title">{title}</div>
-            <div className="post__crator">{creator}</div>
+            <div className="post__message">{message}</div>
             <div className="post__meta">{tags.map((tag) => `#${tag}`)}</div>
             {isOwner &&<button onClick={() => {setCurrentId(_id)}}>Update</button>}
             {isOwner && <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button> }

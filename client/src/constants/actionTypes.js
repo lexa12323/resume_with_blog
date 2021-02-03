@@ -6,3 +6,6 @@ export const LIKE = 'LIKE';
 
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+
+export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
+export const IS_CAT_LOADING = 'IS_CAT_LOADING';

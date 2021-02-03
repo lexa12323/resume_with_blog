@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js'
+import postCategoryRoutes from './routes/postCategories.js'
 import userRoutes from './routes/user.js'
 
 const app = express();
@@ -13,7 +14,10 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
+app.use(express.static('public'));
+
 app.use('/posts', postRoutes)
+app.use('/posts/categories', postCategoryRoutes)
 app.use('/user', userRoutes)
 
 app.get('/', (req, res) => {

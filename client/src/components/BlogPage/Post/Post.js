@@ -10,7 +10,7 @@ export const Post = ({children, post, setCurrentId}) => {
     const dispatch = useDispatch()
     return (
         <div>
-            { selectedFile && <img src={selectedFile} alt={title}/> }
+            { selectedFile && <img src={`http://localhost:5000/uploads/${selectedFile}`} alt={title}/> }
             {  moment(createdAt).fromNow() }
             
             {tags.map((tag) => `#${tag}`)}

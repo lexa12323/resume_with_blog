@@ -10,6 +10,10 @@ const postSchema = mongoose.Schema({
         type: [String],
         default: [],
     },
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "PostCategory",
+    },
     createdAt: {
         type: Date,
         default: new Date()
