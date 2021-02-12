@@ -13,11 +13,35 @@
         margin-right: 30px;
         flex-basis: 50px;
         width: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__svg{
+        fill: #f7941d;
     }
 
     &__item{
         padding: 30px 0;
         display: flex;
         border-bottom: 1px solid #f1f1f1;
+        &:nth-child(2){
+            .contacts__svg{
+                fill: #ed1c24;
+            }
+        }
+        &:nth-child(3){
+            .contacts__svg{
+                fill: #b90162;
+            }
+        }
+        &:nth-child(4){
+            .contacts__svg{
+                fill: #87c05e;
+            }
+        }
+    }
+    &__social{
+        margin-right: 10px;
     }
 }

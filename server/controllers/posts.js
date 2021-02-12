@@ -5,7 +5,7 @@ import mongoose from 'mongoose'
 export const getPosts = async (req, res) => {
     
     try {
-        const postMessages = await PostMessage.find()
+        const postMessages = await PostMessage.find().populate('category').populate('creator', 'email')
         res.status(200).json(postMessages)
     } catch (error) {
         res.status(404).json({message: error.message})
@@ -19,7 +19,8 @@ export const createPost = async (req, res) => {
 
     try {
         await newPost.save()
-        res.status(201).json(newPost)
+        const postData = await newPost.populate('category').populate('creator', 'email').execPopulate()
+        res.status(201).json(postData)
     } catch (error) {
         res.status(409).json({message: error.message})
     }
@@ -32,7 +33,6 @@ export const updatePost = async (req, res) => {
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message: 'Id not found'})
     const updatedPost = await PostMessage.findByIdAndUpdate(_id, { ...body, _id  }, {new: true})
     res.status(200).json(updatedPost)
-    //const newPost = new PostMessage(body)
 
     try {
         await newPost.save()
@@ -69,7 +69,7 @@ export const likePost = async (req, res) => {
         post.likes = post.likes.filter((id) => id !== String(devicefingerprint))
     }
     
-    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true})
+    const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true}).populate('category').populate('creator', 'email')
 
     res.json(updatedPost)
 }

@@ -5,12 +5,14 @@ import { Page } from  '../../views/Page/Page'
 import { Layout } from '../../views/Layout/Layout'
 import { useSelector } from 'react-redux'
 import { Posts } from '../../views/Posts/Posts'
+import { Filter } from '../../views/posts/Filter/Filter'
 import { Form } from '../Form/Form'
 import { getPosts, deletePost, likePost } from '../../actions/posts'
 import { getCategories } from '../../actions/postCategory'
 
 const PostsContainer = () => {
     const [currentId, setCurrentId] = useState(null)
+    const [filter, setFilter] = useState(null)
     const dispatch = useDispatch()
 
     const title = 'Blog';
@@ -29,12 +31,14 @@ const PostsContainer = () => {
     return(
         <Layout>
             <Page title={title} subtitle={subtitle} description={description} darken>
+                <Filter categories={categories.list} onChange={setFilter}/>
                 <Posts 
                     setCurrentId={setCurrentId} 
                     posts={posts} 
                     deletePost={deletePost} 
                     likePost={likePost} 
                     dispatch={dispatch}
+                    filter={filter}
                 />
                 {user.authData && categories.loaded && <Form currentId={currentId} categories={categories.list} setCurrentId={setCurrentId}/> }
             </Page>
