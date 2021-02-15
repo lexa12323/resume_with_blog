@@ -2,7 +2,6 @@ import axios from 'axios'
 import { apiInterceptors } from './setHeaders'
 
 const API = axios.create({baseUrl: "http://localhost:5000"});
-
 apiInterceptors(API);
 
 export const fetchPosts = () => API.get(`/posts`) 
@@ -14,5 +13,6 @@ export const likePost = (_id) => API.patch(`/posts/${_id}/likePost`)
 
 export const fetchCategories = () => API.get(`/posts/categories`)
 
-export const signin = (formData) => axios.post(`/user/signin`, formData)
-export const signup = (formData) => axios.post(`/user/signup`, formData)
+export const signin = (formData) => API.post(`/user/signin`, formData)
+export const signup = (formData) => API.post(`/user/signup`, formData)
+export const refreshToken = (body) => API.post(`/auth/refresh_token`, body);

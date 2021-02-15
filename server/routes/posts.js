@@ -5,7 +5,7 @@ import { uploadSingleFile } from '../middleware/multer.js'
 
 const router = express.Router()
 
-router.get('/', getPosts);
+router.get('/', auth, getPosts);
 router.post('/', [auth, uploadSingleFile], createPost);
 router.patch('/:id', auth, updatePost);
 router.delete('/:id', auth, deletePost);

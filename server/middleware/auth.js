@@ -8,9 +8,9 @@ const auth = (req, res, next) => {
         }
         let decodedData;
         if (token){
-            decodedData = jwt.verify(token, 'secret')
+            decodedData = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
             req.userId = decodedData?.id
-        } 
+        }
 
         next()
     } catch (error) {
