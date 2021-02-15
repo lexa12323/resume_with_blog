@@ -15,8 +15,6 @@ export const Form = ({currentId, setCurrentId, categories}) => {
     const fileRef = useRef(null)
     const post = useSelector((state) => currentId ? state.posts.find((p)=> p._id ===currentId) : null)
 
-    console.log('postData', postData)
-
     useEffect(() => {
         if(post) setPostData(post)
     }, [post])

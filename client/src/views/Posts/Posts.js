@@ -3,10 +3,11 @@ import moment from 'moment'
 import { useSelector } from 'react-redux'
 import './posts.scss'
 
-export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch}) => {
+export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch, filter}) => {
+    const filteredPosts = filter ? posts.filter(post => post.category && post.category._id === filter) : posts;
     return (
         <div className="posts">
-            { posts.map((post) => <Post 
+            { filteredPosts.map((post) => <Post 
                 key={post._id} 
                 post={post} 
                 setCurrentId={setCurrentId}
@@ -23,9 +24,9 @@ export const Posts = ({posts, setCurrentId, deletePost, likePost, dispatch}) => 
 
 export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => {
 
-    const { _id, creator, title, message, tags, selectedFile, createdAt, likes  } = post
+    const { _id, creator, category, title, message, tags, selectedFile, createdAt, likes  } = post
     const user = useSelector((state) => state.auth)
-    const isOwner = post.creator === user?.authData?.result._id;
+    const isOwner = post?.creator?._id === user?.authData?.result._id;
     return (
         <div className="post posts__item">
             <div className="post__date_container">
@@ -34,6 +35,8 @@ export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => 
             </div>
             <div className="post__title">{title}</div>
             <div className="post__message">{message}</div>
+            { category && <div className="post__category">Category: {category?.name}</div> }
+            { creator && <div className="post__creator">Creator: {creator?.email}</div> }
             <div className="post__meta">{tags.map((tag) => `#${tag}`)}</div>
             {isOwner &&<button onClick={() => {setCurrentId(_id)}}>Update</button>}
             {isOwner && <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button> }
