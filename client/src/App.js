@@ -8,6 +8,8 @@ import { ExpriencePage } from './components/ExpriencePage'
 import { EducationPage } from './components/EducationPage'
 import { ContactPage } from './components/ContactPage'
 import { AuthPage } from './components/AuthPage'
+import { PortfolioPage } from './components/PortfolioPage'
+
 
 const App = () => {
     return(
@@ -21,6 +23,7 @@ const App = () => {
                 <Route path="/contact" exact component={ContactPage} />
                 <Route path="/posts" component={PostsContainer} />
                 <Route path="/auth" component={AuthPage} />
+                <Route path="/portfolio" component={PortfolioPage} />
             </Switch>
         </Router>
     )

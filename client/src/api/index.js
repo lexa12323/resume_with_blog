@@ -1,8 +1,9 @@
 import axios from 'axios'
-import { apiInterceptors } from './setHeaders'
+import { apiInterceptors, apiInterceptorsAsync } from './setHeaders'
 
 const API = axios.create({baseUrl: "http://localhost:5000"});
 apiInterceptors(API);
+apiInterceptorsAsync(API);
 
 export const fetchPosts = () => API.get(`/posts`) 
 export const createPost = (newPost) => API.post(`/posts`, newPost ) 

@@ -25,12 +25,8 @@ export const Auth = ({}) => {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
-    
-    //dispatch({ type: "AUTH", data: {result, token } })
-
     return (
         <div>
-            ddd
             <form onSubmit={handleSubmit}>
                 <Input handleChange={handleChange} name='email' type='text' />
                 <Input handleChange={handleChange} name='password' type='text' />

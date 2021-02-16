@@ -1,6 +1,5 @@
-import React, {useEffect} from 'react'
-import decode from 'jwt-decode'
-import { Link, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 import {  logout  } from '../../actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
 import './navbar.scss'
@@ -8,22 +7,7 @@ import './navbar.scss'
 export const Navbar = ({list}) => {
     const user = useSelector((state) => state.auth)
     const dispatch = useDispatch()
-    const location = useLocation()
 
-    useEffect(()=> {
-        const token = user?.authData?.token
-        if(token){
-            try {
-                const decodedToken = decode(token)
-                if(decodedToken.exp * 1000 < new Date().getTime()){
-                    dispatch(logout())
-                }
-                
-            } catch (error) {
-                dispatch(logout())
-            }
-        }
-    }, [location, dispatch, user])
     return (
         <div className="navbar">
             <ul className="navbar__list">

@@ -9,7 +9,7 @@ export const Contacts = ({list}) => {
             <li className="contacts__item">
                 {<div className="contacts__icon"><Icon className='contacts__svg' size={30} name='social'/></div>}
                 <div className="contacts__data">
-                    <div className="contacts__title">Social profiles</div>
+                    <div className="contacts__title">Other contacts</div>
                     <div className="contacts__text">
                         <BrandIcon name='facebook' className="contacts__social"/>
                         <BrandIcon name='linkedin' className="contacts__social"/>
@@ -18,7 +18,9 @@ export const Contacts = ({list}) => {
                         <BrandIcon name='viber' className="contacts__social"/>
                         <BrandIcon name='skype' className="contacts__social"/>
                         <BrandIcon name='twitter' className="contacts__social"/>
-                        <BrandIcon name='github' className="contacts__social"/>
+                        <a href="https://github.com/lexa12323" target="_blank">
+                            <BrandIcon name='github' className="contacts__social"/>
+                        </a>
                     </div>
                 </div>
             </li>

@@ -17,12 +17,12 @@ const userSchema = mongoose.Schema({
 userSchema.methods = {
     createAccessToken: async function () {
       try {
-        let { _id, email, password } = this;
+        let { _id, email } = this;
         let accessToken = jwt.sign(
-          { _id, email, password },
+          { _id, email },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "10m",
+            expiresIn: "5s",
           }
         );
         return accessToken;
@@ -33,12 +33,12 @@ userSchema.methods = {
     },
     createRefreshToken: async function () {
       try {
-        let { _id, email, password } = this;
+        let { _id, email } = this;
         let refreshToken = jwt.sign(
-          { _id, email, password },
+          { _id, email },
           process.env.REFRESH_TOKEN_SECRET,
           {
-            expiresIn: "1d",
+            expiresIn: "15s",
           }
         );
   

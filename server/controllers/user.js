@@ -20,12 +20,16 @@ export const signin = async (req, res) => {
         if (!isPaswordCorrent){
             return res.status(401).json({message: 'User password incorrect'})
         }
+        //delete existingUser.password
 
         let accessToken = await existingUser.createAccessToken();
         let refreshToken = await existingUser.createRefreshToken();
 
+        
+
         res.status(200).json({result: existingUser, token: accessToken, refreshToken})
     } catch (error) {
+        console.log(error)
         res.status(500).json(error)
     }
 }
@@ -64,18 +68,28 @@ export const generateRefreshToken = async (req, res) => {
             const tokenDoc = await Token.findOne({ token: refreshToken });
             //send error if no token found:
             if (!tokenDoc) {
-                return res.status(401).json({ error: "Token expired!" });
+                return res.status(404).json({ error: "Token not found!" });
             } else {
                 //extract payload from refresh token and generate a new access token and send it
-                const payload = jwt.verify(tokenDoc.token, process.env.REFRESH_TOKEN_SECRET);
-                const accessToken = jwt.sign({ user: payload }, process.env.ACCESS_TOKEN_SECRET, {
-                expiresIn: "10m",
-                });
-                return res.status(200).json({ accessToken });
+                const payload = jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+
+                const existingUser = await User.findOne({_id: payload._id})
+
+                let accessToken = await existingUser.createAccessToken();
+                let newRefreshToken = await existingUser.createRefreshToken();
+
+                await Token.deleteOne({ token: refreshToken });
+
+                await new Token({ token: newRefreshToken }).save();
+                //const newRefreshToken = await user.createRefreshToken();
+                return res.status(200).json({ accessToken, refreshToken: newRefreshToken });
             }
         }
     } catch (error) {
-        console.error(error);
+        console.error({error});
+        if (error.name === 'TokenExpiredError'){
+            return res.status(401).json({ error: "Refresh Token expired" });
+        }
         return res.status(500).json({ error: "Internal Server Error!" });
     }
 };
