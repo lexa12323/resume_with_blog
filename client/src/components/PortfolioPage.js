@@ -8,7 +8,7 @@ import { PortfolioList } from '../views/Portfolio/Portfolio'
 const data = [
     {image: 'gorbenko_resume.png', name: 'Сайт, на котором вы находитесь', description: 'Стек технологий: MERN (mongoDB, ExpressJS, React, NodeJS). React в связке с Redux'},
     {image: 'joypup.png', name: 'Joy Pup', link: 'https://joy-pup.com/en/', description: 'Сайт разработан на CMS Wordpress + нативный Javascript на фронте. Сборка фронтенда: webpack, gulp. Для проекта написаны собственные плагины.'},
-    {image: 'private.png', name: 'Конфиденциальные проекты', description: 'Разработка фронтенд части проектов на стеке React + Redux. Оспользование методологии atomic design, styled components для стилизации'},
+    {image: 'private.png', name: 'Конфиденциальные проекты', description: 'Разработка фронтенд части проектов на стеке React + Redux. Использование методологии atomic design, styled components для стилизации'},
     {image: 'monolit.png', name: 'Monolit', link: 'https://nsk-monolit.ru/', description: 'Сайт разработан на CMS Wordpress. Сборка фронтенда: gulp'},
     {image: 'osn6.png', name: 'ОСН 6', link: 'https://osn-group.ru/', description: 'Сайт разработан на CMS Wordpress. Сборка фронтенда: gulp'},
     {image: 'simprint.png', name: 'Simprint', link: 'https://simprint.com.ua/', description: 'Сайт разработан на PHP фреймворке Laravel (как видимимая пользователю часть так и CMS). Для отрисовки фронтенда использовался pug.'},

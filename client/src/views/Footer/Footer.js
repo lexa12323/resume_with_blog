@@ -8,7 +8,10 @@ export const Footer = () => {
     return (
         <footer className="footer">
            <Content>
-               <p className="footer__copy">Copyright © 2020 - {currentYear} <Signature inline modificator="signature-small"/></p>
+               <p className="footer__copy">
+                    <span>Copyright © 2020 - {currentYear} <Signature inline modificator="signature-small"/></span>
+                    <span>Site developed on MERN stack</span>
+                </p>
            </Content>
         </footer>
     )

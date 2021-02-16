@@ -3,6 +3,8 @@
     color: #fff;
     padding: 5px 0;
     &__copy{
-
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }
