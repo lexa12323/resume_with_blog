@@ -2,7 +2,7 @@ export const contacts = [
     {
         icon: "address-book", 
         title: "Address",
-        text: "123 West 12th Street, Suite 456 New York, NY 123456"
+        text: "Ukraine, Cherkassy"
     },
     {
         icon: "phone", 
