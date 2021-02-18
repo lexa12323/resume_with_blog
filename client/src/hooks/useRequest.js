@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 
 export const useRequest = (fetch) => {
+    
     const [data, setData] = useState({})
     const [loaded, setLoaded] = useState(false)
     const [error, setError] = useState(false)
@@ -12,6 +13,7 @@ export const useRequest = (fetch) => {
                 setData(data.data)
                 setLoaded(true)
             } catch (e) {
+                console.log(e)
                 setError(e.message)
             }
         }

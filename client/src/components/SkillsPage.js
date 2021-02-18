@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { Page } from  '../views/Page/Page'
 import { Layout } from '../views/Layout/Layout'
 import { Skills } from '../views/Skills/Skills'
+import { Loader } from '../views/Loader/Loader'
 import { fetchSkills } from '../api/index'
 import { useRequest } from '../hooks/useRequest'
 
@@ -33,15 +34,19 @@ import { useRequest } from '../hooks/useRequest'
 //const iconList = ['html5', 'docker', 'webpack', 'gulp', 'javascript', 'sass', 'react', 'redux', 'node-dot-js', 'mongodb', 'php', 'postgresql', 'mysql', 'bitbucket', 'gitlab'/*, 'teamcity'*/, 'postman', 'swagger', /*'photoshop', 'avocode', */'figma', 'git', /*'mercurial', 'redmine', 'virtualbox',*/ 'linux', 'windows']
 
 export const SkillsPage = () => {
-    
-    const { data, loaded, error } = useRequest(fetchSkills)
+
+    const { data, loaded, error } = useRequest(
+        () => fetchSkills()
+    )
 
     const {title, subtitle, description, icons, content} = data
     
     return (
         <Layout>
             <Page title={title} subtitle={subtitle} description={description}>
-                { loaded && <Skills html={content} icons={icons}/> }
+                <Loader loading={loaded} error={error}>
+                    <Skills html={content} icons={icons}/>
+                </Loader>
             </Page>
         </Layout>
     )
