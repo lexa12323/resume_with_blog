@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js'
 import postCategoryRoutes from './routes/postCategories.js'
 import userRoutes from './routes/user.js'
+import skillsRoutes from './routes/skills.js'
 
 const app = express();
 dotenv.config()
@@ -19,6 +20,7 @@ app.use(express.static('public'));
 app.use('/posts', postRoutes)
 app.use('/posts/categories', postCategoryRoutes)
 app.use('/user', userRoutes)
+app.use('/skills', skillsRoutes)
 
 app.get('/', (req, res) => {
     res.send('Index Page')

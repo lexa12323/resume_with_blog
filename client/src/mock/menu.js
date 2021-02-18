@@ -6,5 +6,5 @@ export const headerMenu = [
     {name: 'Education', href: '/education'},
     {name: 'Portfolio', href: '/portfolio'},
     {name: 'Contact', href: '/contact'},
-    {name: 'Blog', href: '/posts'}
+    {name: 'Blog', href: '/posts'},
 ]

@@ -16,15 +16,16 @@ export const Navbar = ({list}) => {
                         <Link to={item.href} className="navbar__link">{item.name}</Link>
                     </li>
                 )}
+            
+                { user.authData ? (
+                    <div>
+                        <div>Logged {user?.authData?.result?.email}</div>
+                        <button onClick={() => dispatch(logout())}>Logout</button>
+                    </div>
+                ) : (
+                    <Link to="/auth" className="navbar__link">Login</Link>
+                )}
             </ul>
-            { user.authData ? (
-                <div>
-                    <div>Logged {user?.authData?.result?.email}</div>
-                    <button onClick={() => dispatch(logout())}>Logout</button>
-                </div>
-            ) : (
-                <Link to="/auth">Login</Link>
-            )}
         </div>
     )
 }

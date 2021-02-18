@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Page } from  '../views/Page/Page'
 import { Layout } from '../views/Layout/Layout'
 import { Skills } from '../views/Skills/Skills'
+import { fetchSkills } from '../api/index'
+import { useRequest } from '../hooks/useRequest'
 
-const html = ` <p>Опыт - 9 лет разработке веб приложений.</p>
+/*const html = ` <p>Опыт - 9 лет разработки веб приложений.</p>
 <p>Язики програмирования: </p>
 <ol>
 <li>Javascript (react, redux, vue(компоненты), mongoose, express, nodejs)</li>
@@ -19,25 +21,27 @@ const html = ` <p>Опыт - 9 лет разработке веб приложе
 <p><b>Базы данных:</b> Mongodb, PostgreSQL, MySQL</p>
 <p><b>Api:</b> Postman, Swagger</p>
 <p><b>Работа с макетами:</b> Photoshop, Avocode, Figma</p>
-<p><b>Системы контроля версий:</b> Git(в командной строке и в графическом интерфейсе GitKraken), Mercurial(в командной строке и в графическом интерфейсе tortoise hg)</p>
+<p><b>Системы контроля версий:</b> Git (в командной строке и в графическом интерфейсе GitKraken), Mercurial (в командной строке и в графическом интерфейсе tortoise hg)</p>
 <p><b>Системы трекинга:</b> Redmine, Bitrix24 + Tmetric.</p>
 <p><b>Виртуальные машины:</b> VirtualBox, Vmware, Browserstack(онлайн)</p>
 <p><b>Развёртывания и управления приложениями:</b> Docker</p>
 <p><b>Операционные системы:</b> Linux (дистрибутив Ubuntu), Windows</p>
 <p><b>Языки:</b> украинский, русский, английский (достаточный для чтения технической документации и понимания речи, но недостаточный для разговора)</p>
-<p>Способность к самообучению</p>`;
+<p><b>IDE:</b> VS Code</p>
+<p>Способность к самообучению</p>`;*/
 
-const iconList = ['html5', 'docker', 'webpack', 'gulp', 'javascript', 'sass', 'react', 'redux', 'node-dot-js', 'mongodb', 'php', 'postgresql', 'mysql', 'bitbucket', 'gitlab'/*, 'teamcity'*/, 'postman', 'swagger', /*'photoshop', 'avocode', */'figma', 'git', /*'mercurial', 'redmine', 'virtualbox',*/ 'linux', 'windows']
+//const iconList = ['html5', 'docker', 'webpack', 'gulp', 'javascript', 'sass', 'react', 'redux', 'node-dot-js', 'mongodb', 'php', 'postgresql', 'mysql', 'bitbucket', 'gitlab'/*, 'teamcity'*/, 'postman', 'swagger', /*'photoshop', 'avocode', */'figma', 'git', /*'mercurial', 'redmine', 'virtualbox',*/ 'linux', 'windows']
 
 export const SkillsPage = () => {
-    const title = 'My Skills';
-    const subtitle = 'Experience Skill';
-    const description = '';
+    
+    const { data, loaded, error } = useRequest(fetchSkills)
+
+    const {title, subtitle, description, icons, content} = data
     
     return (
         <Layout>
             <Page title={title} subtitle={subtitle} description={description}>
-                <Skills html={html} icons={iconList}/>
+                { loaded && <Skills html={content} icons={icons}/> }
             </Page>
         </Layout>
     )

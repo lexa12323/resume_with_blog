@@ -17,3 +17,5 @@ export const fetchCategories = () => API.get(`/posts/categories`)
 export const signin = (formData) => API.post(`/user/signin`, formData)
 export const signup = (formData) => API.post(`/user/signup`, formData)
 export const refreshToken = (body) => API.post(`/auth/refresh_token`, body);
+
+export const fetchSkills = () => API.get(`/skills`) 
