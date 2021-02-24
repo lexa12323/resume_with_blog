@@ -11,13 +11,19 @@ export const Contacts = ({list}) => {
                 <div className="contacts__data">
                     <div className="contacts__title">Other contacts</div>
                     <div className="contacts__text">
-                        <BrandIcon name='facebook' className="contacts__social"/>
+                        <a href="https://www.facebook.com/profile.php?id=100008143963740">
+                            <BrandIcon name='facebook' className="contacts__social"/>
+                        </a>
                         <BrandIcon name='linkedin' className="contacts__social"/>
-                        <BrandIcon name='instagram' className="contacts__social"/>
-                        <BrandIcon name='telegram' className="contacts__social"/>
-                        <BrandIcon name='viber' className="contacts__social"/>
-                        <BrandIcon name='skype' className="contacts__social"/>
-                        <BrandIcon name='twitter' className="contacts__social"/>
+                        <a href="tg://resolve?domain=@AlexeyGorbenko">
+                            <BrandIcon name='telegram' className="contacts__social"/>
+                        </a>
+                        <a href="viber://chat?number=+380937936695">
+                            <BrandIcon name='viber' className="contacts__social"/>
+                        </a>
+                        <a href="skype:+buster376?call">
+                            <BrandIcon name='skype' className="contacts__social"/>
+                        </a>
                         <a href="https://github.com/lexa12323" target="_blank">
                             <BrandIcon name='github' className="contacts__social"/>
                         </a>
