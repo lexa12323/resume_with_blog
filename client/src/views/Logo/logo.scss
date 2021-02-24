@@ -21,4 +21,7 @@
         text-decoration: none;
         color: #fff;
     }
+    @media (max-width: 1024px) {
+        padding: 10px 15px;
+    }
 }
