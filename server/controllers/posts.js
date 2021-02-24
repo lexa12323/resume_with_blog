@@ -1,11 +1,11 @@
 import PostMessage from '../models/postMessage.js'
 import mongoose from 'mongoose'
-
+import jwt from 'jsonwebtoken'
 
 export const getPosts = async (req, res) => {
     
     try {
-        const postMessages = await PostMessage.find().populate('category').populate('creator', 'email')
+        const postMessages = await PostMessage.find().sort({'createdAt': -1}).populate('category').populate('creator', 'email')
         res.status(200).json(postMessages)
     } catch (error) {
         res.status(404).json({message: error.message})
@@ -15,7 +15,17 @@ export const getPosts = async (req, res) => {
 export const createPost = async (req, res) => {
     
     const { body, file } = req;
-    const newPost = new PostMessage({...body, creator: req.userId, selectedFile: file?.filename})
+
+    let creatorPayload;
+
+    if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer'){
+        const creatorToken = req.headers.authorization.split(' ')[1];
+        creatorPayload = jwt.verify(creatorToken, process.env.ACCESS_TOKEN_SECRET);
+    }
+    const { tags } = body
+    const tagsArray = tags.split(', ')
+
+    const newPost = new PostMessage({...body, tags: tagsArray,  creator: creatorPayload._id, selectedFile: file?.filename})
 
     try {
         await newPost.save()

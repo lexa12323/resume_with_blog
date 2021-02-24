@@ -4,13 +4,14 @@ import { ExprienceList } from '../views/Exprience/Exprience'
 import { yearsDiff } from '../helpers/yearsDiff'
 import { exprience } from '../mock/exprience'
 import { Layout } from '../views/Layout/Layout'
+import { experienceBeginDate } from '../constants/common'
 
 export const ExpriencePage = () => {
 
     const title = 'My Exprience';
-    const years = yearsDiff('2012-02-10', new Date())
+    const years = yearsDiff(experienceBeginDate, new Date())
     const subtitle = `${years} Years Exprience`;
-    const description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.';
+    const description = '';
     
     return (
         <Layout>

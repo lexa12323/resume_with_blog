@@ -17,14 +17,14 @@ export const Navbar = ({list}) => {
                     </li>
                 )}
             
-                { user.authData ? (
+                {/* user.authData ? (
                     <div>
                         <div>Logged {user?.authData?.result?.email}</div>
                         <button onClick={() => dispatch(logout())}>Logout</button>
                     </div>
                 ) : (
                     <Link to="/auth" className="navbar__link">Login</Link>
-                )}
+                )*/}
             </ul>
         </div>
     )

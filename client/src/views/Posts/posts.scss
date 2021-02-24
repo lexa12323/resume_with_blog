@@ -29,6 +29,7 @@
 
     &__meta{
         color: #ccc;
+        padding: 0 0 5px 0;
     }
 
     &__date_container{
@@ -50,5 +51,20 @@
         text-align: center;
         text-transform: uppercase;
         padding: 10px 20px;
+    }
+
+    &__category{
+        padding: 5px 0 0 0;
+        color: #ccc;
+    }
+
+    &__like{
+        display: flex;
+        background-color: transparent;
+        border: 0;
+        padding: 0;
+        svg{
+            margin-right: 5px;
+        }
     }
 }

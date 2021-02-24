@@ -17,7 +17,7 @@ const PostsContainer = () => {
 
     const title = 'Blog';
     const subtitle = 'News & Update';
-    const description = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.';
+    const description = '';
 
     const posts = useSelector((state) => state.posts)
     const user = useSelector((state) => state.auth)

@@ -2,7 +2,7 @@ import React from 'react'
 import './exprience.scss'
 
 
-export const Exprience = ({img, title, subtitle, text}) => {
+export const Exprience = ({img, title, subtitle, text, role}) => {
     return (
         <div className="exprience__item">
             <img className="exprience__image" src={img} alt="logo"/>
@@ -14,8 +14,12 @@ export const Exprience = ({img, title, subtitle, text}) => {
                     {subtitle}
                 </div>
                 <div className="exprience__text">
+                    {role}
+                </div>
+                <div className="exprience__text">
                     {text}
                 </div>
+                
             </div>
         </div>
     )

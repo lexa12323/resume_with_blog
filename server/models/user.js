@@ -22,7 +22,7 @@ userSchema.methods = {
           { _id, email },
           process.env.ACCESS_TOKEN_SECRET,
           {
-            expiresIn: "5s",
+            expiresIn: "1h",
           }
         );
         return accessToken;
@@ -38,7 +38,7 @@ userSchema.methods = {
           { _id, email },
           process.env.REFRESH_TOKEN_SECRET,
           {
-            expiresIn: "15s",
+            expiresIn: "1d",
           }
         );
   
