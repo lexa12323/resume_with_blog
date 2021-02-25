@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {  logout  } from '../../actions/auth'
 import { Icon } from '../common/Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux'
@@ -26,7 +26,9 @@ export const Navbar = ({list}) => {
             <ul className={`navbar__list ${opened && 'navbar__list-opened'}`}>
                 {list.map((item, i) => 
                     <li key={i} className="navbar__item">
-                        <Link to={item.href} className="navbar__link">{item.name}</Link>
+                        <NavLink to={item.href} exact={true} className="navbar__link" activeClassName='navbar__link-active'>
+                            {item.name}
+                        </NavLink>
                     </li>
                 )}
             

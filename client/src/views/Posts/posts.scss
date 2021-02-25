@@ -66,6 +66,10 @@
         color: #ccc;
     }
 
+    &__message{
+        word-break: break-word;
+    }
+
     &__like{
         display: flex;
         background-color: transparent;
