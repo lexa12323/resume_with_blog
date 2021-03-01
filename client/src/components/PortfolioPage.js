@@ -6,7 +6,7 @@ import { PortfolioList } from '../views/Portfolio/Portfolio'
 
 
 const data = [
-    {image: 'gorbenko_resume.png', name: 'Сайт, на котором вы находитесь', description: 'Стек технологий: MERN (mongoDB, ExpressJS, React, NodeJS). Фронтенд: React в связке с Redux. Бекенд: CRUD App.'},
+    {image: 'gorbenko_resume.png', name: 'Сайт, на котором вы находитесь', description: 'Стек технологий: MERN (mongoDB, ExpressJS, React, NodeJS). Фронтенд: React в связке с Redux. Бекенд: NodeJS CRUD App.'},
     {image: 'joypup.png', name: 'Joy Pup', link: 'https://joy-pup.com/en/', description: 'Сайт разработан на CMS Wordpress + нативный Javascript на фронте. Сборка фронтенда: webpack, gulp. Для проекта написаны собственные плагины.'},
     {image: 'private.png', name: 'Конфиденциальные проекты', description: 'Разработка фронтенд части проектов на стеке React + Redux. Использование методологии atomic design, styled components для стилизации'},
     {image: 'monolit.png', name: 'Monolit', link: 'https://nsk-monolit.ru/', description: 'Сайт разработан на CMS Wordpress. Сборка фронтенда: gulp'},

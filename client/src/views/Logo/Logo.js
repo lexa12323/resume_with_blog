@@ -8,7 +8,7 @@ export const Logo = ({modificator}) => {
     return (
         <Link className="logo-link" to='/'>
             <div className={`logo ${modificator}`}>
-                <img className="logo__img" src='/images/logo_ex2.png' alt="logo"/>
+                <img className="logo__img" src='/images/logo3.JPG' alt="logo"/>
                 <div className="logo__text">Oleksii Gorbenko</div>
             </div>
         </Link>

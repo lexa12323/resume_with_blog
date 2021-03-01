@@ -1,0 +1,29 @@
+{
+  "name": "resume_with_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"cd server && npm start\" \"cd client && npm start \"",
+    "build": "cd client && npm run build",
+    "install": "(cd server && npm install) && (cd client && npm install)",
+    "start": "cd server && npm run start",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^3.5.1"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexa12323/resume_with_blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lexa12323/resume_with_blog/issues"
+  },
+  "homepage": "https://github.com/lexa12323/resume_with_blog#readme"
+}

@@ -9,7 +9,7 @@ export const Footer = () => {
         <footer className="footer">
            <Content>
                <p className="footer__copy">
-                    <span>Copyright © 2020 - {currentYear} <Signature inline modificator="signature-small"/></span>
+                    <span>Copyright © 2020 - {currentYear} <Signature inline modificator="signature-small footer__signature"/></span>
                     <span>Site developed on MERN stack</span>
                 </p>
            </Content>

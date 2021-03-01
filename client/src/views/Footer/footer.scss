@@ -7,4 +7,20 @@
         justify-content: space-between;
         align-items: center;
     }
+
+    &__signature{
+
+    }
+
+    @media (max-width: 1024px) {
+        padding: 5px 10px;
+        &__signature{
+            display: block;
+        }
+
+        &__copy{
+            display: block;
+            text-align: right;
+        }
+    }
 }
