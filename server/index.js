@@ -22,9 +22,9 @@ app.use('/posts/categories', postCategoryRoutes)
 app.use('/user', userRoutes)
 app.use('/skills', skillsRoutes)
 
-app.get('/', (req, res) => {
+/*app.get('/', (req, res) => {
     res.send('Index Page')
-})
+})*/
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
