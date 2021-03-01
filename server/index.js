@@ -15,7 +15,7 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
-app.use(express.static('public'));
+app.use('/static', express.static('public'));
 
 app.use('/posts', postRoutes)
 app.use('/posts/categories', postCategoryRoutes)
