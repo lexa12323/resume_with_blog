@@ -1,5 +1,6 @@
 import React from 'react'
 import './app.css'
+import {Helmet} from "react-helmet";
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import PostsContainer from './components/BlogPage/PostsContainer'
 import { AboutPage } from './components/AboutPage'
@@ -14,6 +15,9 @@ import { PortfolioPage } from './components/PortfolioPage'
 const App = () => {
     return(
         <Router>
+            <Helmet>
+                <title>Oleksii Horbenko</title>
+            </Helmet>
             <Switch>
                 <Route path="/" exact component={AboutPage} />
                 {/*<Route path="/about" exact component={AboutPage} />*/}
