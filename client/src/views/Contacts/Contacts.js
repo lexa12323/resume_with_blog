@@ -11,19 +11,19 @@ export const Contacts = ({list}) => {
                 <div className="contacts__data">
                     <div className="contacts__title">Other contacts</div>
                     <div className="contacts__text">
-                        <a href="https://www.facebook.com/profile.php?id=100008143963740">
+                        <a href="https://www.facebook.com/profile.php?id=100008143963740" target="_blank">
                             <BrandIcon name='facebook' className="contacts__social"/>
                         </a>
-                        <a href="https://linkedin.com/in/oleksii-gorbenko-09a426208">
+                        <a href="https://linkedin.com/in/oleksii-gorbenko-09a426208" target="_blank">
                             <BrandIcon name='linkedin' className="contacts__social"/>
                         </a>
-                        <a href="tg://resolve?domain=@AlexeyGorbenko">
+                        <a href="tg://resolve?domain=@AlexeyGorbenko" target="_blank">
                             <BrandIcon name='telegram' className="contacts__social"/>
                         </a>
-                        <a href="viber://chat?number=+380937936695">
+                        <a href="viber://chat?number=+380937936695" target="_blank">
                             <BrandIcon name='viber' className="contacts__social"/>
                         </a>
-                        <a href="skype:+buster376?call">
+                        <a href="skype:+buster376?call" target="_blank">
                             <BrandIcon name='skype' className="contacts__social"/>
                         </a>
                         <a href="https://github.com/lexa12323" target="_blank">

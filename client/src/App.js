@@ -10,6 +10,7 @@ import { EducationPage } from './components/EducationPage'
 import { ContactPage } from './components/ContactPage'
 import { AuthPage } from './components/AuthPage'
 import { PortfolioPage } from './components/PortfolioPage'
+import { Page404 } from './components/Page404'
 
 
 const App = () => {
@@ -28,6 +29,9 @@ const App = () => {
                 <Route path="/posts" component={PostsContainer} />
                 <Route path="/auth" component={AuthPage} />
                 <Route path="/projects" component={PortfolioPage} />
+                <Route path="*">
+                    <Page404 />
+                </Route>
             </Switch>
         </Router>
     )
