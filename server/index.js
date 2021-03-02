@@ -7,6 +7,7 @@ import postRoutes from './routes/posts.js'
 import postCategoryRoutes from './routes/postCategories.js'
 import userRoutes from './routes/user.js'
 import skillsRoutes from './routes/skills.js'
+import path from 'path'
 
 const app = express();
 dotenv.config()
@@ -17,10 +18,10 @@ app.use(cors());
 
 app.use('/static', express.static('public'));
 
-app.use('/posts', postRoutes)
-app.use('/posts/categories', postCategoryRoutes)
-app.use('/user', userRoutes)
-app.use('/skills', skillsRoutes)
+app.use('/api/posts', postRoutes)
+app.use('/api/posts/categories', postCategoryRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/skills', skillsRoutes)
 
 /*app.get('/', (req, res) => {
     res.send('Index Page')
@@ -29,6 +30,10 @@ app.use('/skills', skillsRoutes)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
 }
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(path.resolve(), '../client', 'build',  'index.html'));
+});
 
 const PORT = process.env.PORT || 8080
 

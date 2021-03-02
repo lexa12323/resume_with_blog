@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useCallback} from 'react'
 import { Page } from  '../views/Page/Page'
 import { Layout } from '../views/Layout/Layout'
 import { Skills } from '../views/Skills/Skills'
@@ -36,7 +36,7 @@ import { useRequest } from '../hooks/useRequest'
 export const SkillsPage = () => {
 
     const { data, loaded, error } = useRequest(
-        () => fetchSkills()
+        useCallback(() => fetchSkills(), [])
     )
 
     const {title, subtitle, description, icons, content} = data
