@@ -23,9 +23,9 @@ app.use('/api/user', userRoutes)
 app.use('/api/skills', skillsRoutes)
 
 //TODO sync routes with frontend or separate to different apps
-/*app.get('/*', function (req, res) {
+app.get('/*', function (req, res) {
   res.sendFile(path.join(path.resolve(), '../client', 'build',  'index.html'));
-});*/
+});
 
 const PORT = process.env.PORT || 8080
 
