@@ -7,7 +7,6 @@ import postRoutes from './routes/posts.js'
 import postCategoryRoutes from './routes/postCategories.js'
 import userRoutes from './routes/user.js'
 import skillsRoutes from './routes/skills.js'
-import path from 'path'
 
 const app = express();
 dotenv.config()
@@ -16,7 +15,7 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 
-app.use('/static', express.static('public'));
+app.use('/sources', express.static('public'));
 
 app.use('/api/posts', postRoutes)
 app.use('/api/posts/categories', postCategoryRoutes)
@@ -24,9 +23,9 @@ app.use('/api/user', userRoutes)
 app.use('/api/skills', skillsRoutes)
 
 //TODO sync routes with frontend or separate to different apps
-app.get('/*', function (req, res) {
+/*app.get('/*', function (req, res) {
   res.sendFile(path.join(path.resolve(), '../client', 'build',  'index.html'));
-});
+});*/
 
 const PORT = process.env.PORT || 8080
 

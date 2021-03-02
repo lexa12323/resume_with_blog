@@ -32,7 +32,7 @@ export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => 
     return (
         <div className="post posts__item">
             <div className="post__date_container">
-                <img className="post__image" src={`/static/uploads/${selectedFile}`}  alt="post_img"/>
+                <img className="post__image" src={`/sources/uploads/${selectedFile}`}  alt="post_img"/>
                 <div className="post__date">{moment(createdAt).fromNow()}</div>
             </div>
             <div className="post__title">{title}</div>
