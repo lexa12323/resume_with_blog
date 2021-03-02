@@ -7,6 +7,7 @@ import postRoutes from './routes/posts.js'
 import postCategoryRoutes from './routes/postCategories.js'
 import userRoutes from './routes/user.js'
 import skillsRoutes from './routes/skills.js'
+import path from 'path'
 
 const app = express();
 dotenv.config()
