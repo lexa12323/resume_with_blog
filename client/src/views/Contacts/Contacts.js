@@ -14,7 +14,7 @@ export const Contacts = ({list}) => {
                         <a href="https://www.facebook.com/profile.php?id=100008143963740">
                             <BrandIcon name='facebook' className="contacts__social"/>
                         </a>
-                        <a href="linkedin.com/in/oleksii-gorbenko-09a426208">
+                        <a href="https://linkedin.com/in/oleksii-gorbenko-09a426208">
                             <BrandIcon name='linkedin' className="contacts__social"/>
                         </a>
                         <a href="tg://resolve?domain=@AlexeyGorbenko">
