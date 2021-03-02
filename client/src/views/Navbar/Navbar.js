@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import {  logout  } from '../../actions/auth'
-import { Icon } from '../common/Icon/Icon';
+import { NavLink } from 'react-router-dom'
+import { logout  } from '../../actions/auth'
 import { useDispatch, useSelector } from 'react-redux'
 import './navbar.scss'
 

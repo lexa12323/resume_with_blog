@@ -27,7 +27,7 @@ export const Education = ({img, title, period, subtitle, text}) => {
 export const EducationList = ({education}) => {
     return (
         <div className="education">
-            { education.map((item) => <Education {...item}/>) }
+            { education.map((item, i) => <Education key={i} {...item}/>) }
         </div>
     )
 }

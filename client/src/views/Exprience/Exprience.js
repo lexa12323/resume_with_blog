@@ -28,7 +28,7 @@ export const Exprience = ({img, title, subtitle, text, role}) => {
 export const ExprienceList = ({exprience}) => {
     return (
         <div className="exprience">
-            { exprience.map((item) => <Exprience {...item}/>) }
+            { exprience.map((item, i) => <Exprience key={i} {...item}/>) }
         </div>
     )
 }
