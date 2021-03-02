@@ -23,14 +23,7 @@ app.use('/api/posts/categories', postCategoryRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/skills', skillsRoutes)
 
-/*app.get('/', (req, res) => {
-    res.send('Index Page')
-})*/
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../client/build"));
-}
-
+//TODO sync routes with frontend or separate to different apps
 app.get('/*', function (req, res) {
   res.sendFile(path.join(path.resolve(), '../client', 'build',  'index.html'));
 });
