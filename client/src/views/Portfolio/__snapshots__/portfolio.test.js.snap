@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortfolioList component should render PortfolioList component 1`] = `
+<div
+  className="portfolio"
+>
+  <PortfolioItem
+    description="Стек технологий: MERN"
+    image="gorbenko_resume.png"
+    key="0"
+    name="Сайт, на котором вы находитесь"
+  />
+  <PortfolioItem
+    description="Стек технологий: MERN"
+    image="gorbenko_resume.png"
+    key="1"
+    name="Сайт, на котором вы находитесь"
+  />
+</div>
+`;

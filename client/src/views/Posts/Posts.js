@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux'
 import { Icon } from '../common/Icon/Icon';
 import './posts.scss'
@@ -39,11 +40,25 @@ export const Post = ({ post, setCurrentId, dispatch, deletePost, likePost }) => 
             <div className="post__message">{message}</div>
             { category && <div className="post__category">Категория: {category?.name}</div> }
             { /*creator && <div className="post__creator">Creator: {creator?.email}</div>*/ }
-            <div className="post__meta">{tags.map((tag) => `#${tag} `)}</div>
+            <div className="post__meta">{tags && tags.map((tag) => `#${tag} `)}</div>
             {isOwner &&<button onClick={() => {setCurrentId(_id)}}>Update</button>}
             {isOwner && <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button> }
             
-            <button className="post__like" onClick={() => {dispatch(likePost(post._id))}}><div><Icon size="16" fill="#f4bf00" name='like'/></div> {likes.length}</button>
+            <button className="post__like" onClick={() => {dispatch(likePost(post._id))}}><div><Icon size="16" fill="#f4bf00" name='like'/></div> {likes && likes.length}</button>
         </div>
     )
 }
+
+Post.propTypes = {
+    post: PropTypes.object,
+    setCurrentId: PropTypes.func,
+    deletePost: PropTypes.func,
+    likePost: PropTypes.func,
+};
+
+Post.defaultProps = {
+    post: {},
+    setCurrentId: () => {},
+    deletePost: () => {},
+    likePost: () => {},
+};

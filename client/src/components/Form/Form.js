@@ -4,6 +4,7 @@ import styles from './form.module.css'
 import { createPost, updatePost } from '../../actions/posts'
 
 export const Form = ({currentId, setCurrentId, categories}) => {
+
     const defaultPostData = {
         title: '',
         message: '',
@@ -11,6 +12,7 @@ export const Form = ({currentId, setCurrentId, categories}) => {
         selectedFile: '',
         category: categories[0]._id,
     }
+    
     const [postData, setPostData] = useState(defaultPostData)
     const fileRef = useRef(null)
     const post = useSelector((state) => currentId ? state.posts.find((p)=> p._id ===currentId) : null)

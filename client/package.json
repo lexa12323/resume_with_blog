@@ -14,7 +14,6 @@
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "node-sass": "^4.14.1",
-    "npm": "^6.14.11",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-file-base64": "^1.0.3",
@@ -27,6 +26,7 @@
     "redux-thunk": "^2.3.0",
     "web-vitals": "^0.2.4"
   },
+  
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -34,6 +34,10 @@
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000",
+
+  "jest": {
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -51,5 +55,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
+    "install": "^0.13.0",
+    "npm": "^6.14.11"
   }
 }
