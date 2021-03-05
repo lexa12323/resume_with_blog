@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
-import iconSet from "./selection.json";
-import iconBrendSet from "./brands.json";
+import { useIconLoader } from './useIconLoader'
 
 //TODO brands and selection is too large. Bandle too large
 
@@ -13,15 +12,15 @@ interface IIconObject{
   attrs: []
 }
 
-interface IIconProps {
+export interface IIconProps {
   fill?: string,
   name: string,
   styles?: string[],
   size?: string,
 }
 
-interface IMoonIconProps extends IIconProps{
-  iconSet: {
+export interface IMoonIconProps extends IIconProps{
+  iconSet?: {
     icons: any[],
     selection?: any[],
     metadata: {},
@@ -34,23 +33,25 @@ interface IMoonIconProps extends IIconProps{
 }
 
 export const Icon: React.FC<IIconProps> = (props) => {
-    const decoratorProps = {...props, iconSet: iconSet}
-
+    //const decoratorProps = {...props, iconSet: iconSet}
+    const {iconsData , iconsLoaded} = useIconLoader(props, 'selection')
+    if (!iconsLoaded) return null
     return (
-        < MoonIcon {...decoratorProps }/>
+        < MoonIcon {...iconsData }/>
     )
 };
 
 export const BrandIcon: React.FC<IIconProps> = (props) => {
-    const decoratorProps = {...props, iconSet: iconBrendSet}
+  const {iconsData , iconsLoaded} = useIconLoader(props, 'brands')
+  if (!iconsLoaded) return null
     return (
-        < MoonIcon {...decoratorProps }/>
+        < MoonIcon {...iconsData }/>
     )
 };
 
 const MoonIcon: React.FC<IMoonIconProps> = ({iconSet, name, styles, size = '24', ...rest}) => {
     const find = (iconEl: IIconElement) => iconEl.tags.includes(name);
-    const currentIcon = iconSet.icons.find(find);
+    const currentIcon = iconSet && iconSet.icons.find(find);
     const renderPath = (iconObj: IIconObject) => (path: string, index: number) => {
       const attrs = (iconObj!.attrs && iconObj!.attrs[index]) || {};
       return <path /*style={styles.path}*/ key={index} d={path} {...attrs} />;
