@@ -59,7 +59,6 @@ export const Post: React.FC<PostProps> = ({ post, setCurrentId, deletePost, like
 
     const { _id, creator, category, title, message, tags, selectedFile, createdAt, likes  } = post
     const user = useSelector((state: IUser) => state.auth)
-    const dispatch = useDispatch()
     const isOwner = post?.creator?._id === user?.authData?.result._id;
     return (
         <div className="post posts__item">
@@ -73,9 +72,9 @@ export const Post: React.FC<PostProps> = ({ post, setCurrentId, deletePost, like
             { /*creator && <div className="post__creator">Creator: {creator?.email}</div>*/ }
             <div className="post__meta">{tags && tags.map((tag) => `#${tag} `)}</div>
             {isOwner && <button onClick={() => {setCurrentId(_id)}}>Update</button>}
-            {isOwner && <button onClick={() => {dispatch(deletePost(post._id))}}>Delete</button> } 
+            {isOwner && <button onClick={() => {deletePost(post._id)}}>Delete</button> } 
             
-            <button className="post__like" onClick={() => {dispatch(likePost(post._id))}}>
+            <button className="post__like" onClick={() => {likePost(post._id)}}>
                 <div>
                     <Icon size="16" fill="#f4bf00" name='like'/>
                 </div> 

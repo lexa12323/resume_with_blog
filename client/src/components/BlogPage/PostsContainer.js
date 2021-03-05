@@ -35,9 +35,8 @@ const PostsContainer = () => {
                 <Posts 
                     setCurrentId={setCurrentId} 
                     posts={posts} 
-                    deletePost={deletePost} 
-                    likePost={likePost} 
-                    dispatch={dispatch}
+                    deletePost={(id) => dispatch(deletePost(id))} 
+                    likePost={(id) => dispatch(likePost(id))} 
                     filter={filter}
                 />
                 {user.authData && categories.loaded && <Form currentId={currentId} categories={categories.list} setCurrentId={setCurrentId}/> }
