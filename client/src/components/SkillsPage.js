@@ -21,6 +21,7 @@ import { useRequest } from '../hooks/useRequest'
 <p><b>CI/CD:</b> Bitbucket, Gitlab, Teamcity</p>
 <p><b>Базы данных:</b> Mongodb, PostgreSQL, MySQL</p>
 <p><b>Api:</b> Postman, Swagger</p>
+<p><b>Unit Тестирование:</b> JEST, Enzyme</p>
 <p><b>Работа с макетами:</b> Photoshop, Avocode, Figma</p>
 <p><b>Системы контроля версий:</b> Git (в командной строке и в графическом интерфейсе GitKraken), Mercurial (в командной строке и в графическом интерфейсе tortoise hg)</p>
 <p><b>Системы трекинга:</b> Redmine, Bitrix24 + Tmetric.</p>

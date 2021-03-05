@@ -2,27 +2,57 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import iconSet from "./selection.json";
 import iconBrendSet from "./brands.json";
+
 //TODO brands and selection is too large. Bandle too large
 
-export const Icon = (props) => {
+interface IIconElement{
+  tags: string[]
+}
+
+interface IIconObject{
+  attrs: []
+}
+
+interface IIconProps {
+  fill?: string,
+  name: string,
+  styles?: string[],
+  size?: string,
+}
+
+interface IMoonIconProps extends IIconProps{
+  iconSet: {
+    icons: any[],
+    selection?: any[],
+    metadata: {},
+    height: number,
+    prevSize: number,
+    colorThemes?: string[],
+    preferences: {},
+    IcoMoonType: string
+  },
+}
+
+export const Icon: React.FC<IIconProps> = (props) => {
     const decoratorProps = {...props, iconSet: iconSet}
+
     return (
         < MoonIcon {...decoratorProps }/>
     )
 };
 
-export const BrandIcon = (props) => {
+export const BrandIcon: React.FC<IIconProps> = (props) => {
     const decoratorProps = {...props, iconSet: iconBrendSet}
     return (
         < MoonIcon {...decoratorProps }/>
     )
 };
 
-const MoonIcon = ({iconSet, name, styles, size = '24', ...rest}) => {
-    const find = iconEl => iconEl.tags.includes(name);
+const MoonIcon: React.FC<IMoonIconProps> = ({iconSet, name, styles, size = '24', ...rest}) => {
+    const find = (iconEl: IIconElement) => iconEl.tags.includes(name);
     const currentIcon = iconSet.icons.find(find);
-    const renderPath = iconObj => (path, index) => {
-      const attrs = (iconObj.attrs && iconObj.attrs[index]) || {};
+    const renderPath = (iconObj: IIconObject) => (path: string, index: number) => {
+      const attrs = (iconObj!.attrs && iconObj!.attrs[index]) || {};
       return <path /*style={styles.path}*/ key={index} d={path} {...attrs} />;
     };
   
