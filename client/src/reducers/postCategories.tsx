@@ -1,10 +1,15 @@
 import { FETCH_CATEGORIES, IS_CAT_LOADING } from '../constants/actionTypes'
 
-const defaultState = {list: [], loading:false, loaded: false}
+type PostCategoryState = {
+    list: Array<any>,
+    loading: boolean,
+    loaded: boolean
+}
 
-type PostCategoryState = typeof defaultState;
+const defaultState: PostCategoryState = {list: [], loading:false, loaded: false}
 
-const reducer = (categories: PostCategoryState = defaultState, action: ActionRedux) => {
+
+const reducer = (categories: PostCategoryState = defaultState, action: ActionRedux): PostCategoryState => {
 
     switch (action.type) { 
         case FETCH_CATEGORIES:

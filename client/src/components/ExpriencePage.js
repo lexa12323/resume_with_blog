@@ -8,9 +8,9 @@ import { experienceBeginDate } from '../constants/common'
 
 export const ExpriencePage = () => {
 
-    const title = 'My Exprience';
+    const title = 'My Experience';
     const years = yearsDiff(experienceBeginDate, new Date())
-    const subtitle = `${years} Years Exprience`;
+    const subtitle = `${years} Years Experience`;
     const description = '';
     
     return (

@@ -12,7 +12,7 @@ export const AboutPage = () => {
 
     const title = 'Oleksii Horbenko';
     const subtitle = 'Web Developer';
-    const description = `Я специализируюсь на web-разработке, опыт работы в этой сфере ${expiriance} лет. Мой возраст ${age} лет. Имею высшее образование. Web-технологии давно стали частью моей жизни, мне нравится заниматься своим делом, нравится работа и проекты, которые я создаю.`;
+    const description = `Web developer who has been coding for the Web since 2012. My main goal is to work on interesting projects in a team of professionals, in an environment where I can make a real contribution but also improve my skills.`;
     //const tmp = [{count: 33, name: 'Projects completed'},{count: 18, name: 'Winning Awards'},{count: 225, name: 'Happy Clients'},{count: 19, name: 'Running Project'}]
     
     return (
